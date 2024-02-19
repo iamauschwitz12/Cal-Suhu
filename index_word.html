@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator Temp</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="judul">
+        <h2>Calculator Temperature by : iamauschwitz</h2>
+      </div>
+    </div>
+    <div class="konten">
+      <div class="kotak">
+        <div class="isi">
+          <h2>Calculator Temperature</h2>
+          <p>Masukan Nilai Suhu :</p>
+          <input type="text" />
+          <p>Pilih Unit :</p>
+          <select name="suhu" id="suhu">
+            <option value="C_ke_K">Celcius Ke Kelvin</option>
+            <option value="C_ke_F">Celcius Ke Fahrenheit</option>
+            <option value="C_ke_R">Celcius Ke Reamor</option>
+            <option value="K_ke_C">Kelvin Ke Celcius</option>
+            <option value="K_ke_F">Kelvin Ke Fahrenheit</option>
+            <option value="K_ke_R">Kelvin Ke Reamor</option>
+            <option value="F_ke_K">Fahrenheit Ke Kelvin</option>
+            <option value="F_ke_C">Fahrenheit Ke Celcius</option>
+            <option value="F_ke_R">Fahrenheit Ke Reamor</option>
+            <option value="R_ke_K">Reamor Ke Kelvin</option>
+            <option value="R_ke_C">Reamor Ke Celcius</option>
+            <option value="R_ke_F">Reamor Ke Fahrenheit</option>
+          </select>
+          <br />
+          <button onclick="convert()">Convert</button>
+          <p style="font-size: 20px">
+            Hasil Convert Adalah :
+            <span id="Hasil" style="color: aliceblue; font-size: 20px"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function convert() {
+        // Mendapatkan nilai suhu yang dimasukkan oleh pengguna
+        var inputSuhu = parseFloat(
+          document.querySelector('input[type="text"]').value
+        );
+
+        // Mendapatkan pilihan unit suhu dari dropdown
+        var selectedUnit = document.getElementById("suhu").value;
+
+        // Variabel untuk menyimpan hasil konversi
+        var hasilKonversi;
+        var unitKet;
+
+        // Melakukan konversi sesuai dengan pilihan pengguna
+        switch (selectedUnit) {
+          case "C_ke_K":
+            hasilKonversi = inputSuhu + 273.15; // Celcius ke Kelvin
+            unitKet = "derajat Kelvin"
+            break;
+          case "C_ke_F":
+            hasilKonversi = (inputSuhu * 9) / 5 + 32; // Celcius ke Fahrenheit
+            unitKet = "derajat Fahrenheit"
+            break;
+          case "C_ke_R":
+            hasilKonversi = inputSuhu * 0.8; // Celcius ke Reamur
+            unitKet = "derajat Reamor"
+            break;
+          default:
+            hasilKonversi = "Pilih unit suhu yang valid";
+        }
+
+        // Menampilkan hasil konversi pada elemen dengan id "Hasil"
+        document.getElementById("Hasil").textContent = hasilKonversi + " " + unitKet;
+      }
+    </script>
+  </body>
+</html>

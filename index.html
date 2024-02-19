@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator Temp</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="judul">
+        <h2>Calculator Temperature by : iamauschwitz</h2>
+      </div>
+    </div>
+    <div class="konten">
+      <div class="kotak">
+        <div class="isi">
+          <h2>Calculator Temperature</h2>
+          <p>Masukan Nilai Suhu :</p>
+          <input type="text" />
+          <p>Pilih Unit :</p>
+          <select name="suhu" id="suhu">
+            <option value="C_ke_K">Celcius Ke Kelvin</option>
+            <option value="C_ke_F">Celcius Ke Fahrenheit</option>
+            <option value="C_ke_R">Celcius Ke Reamor</option>
+            <option value="K_ke_C">Kelvin Ke Celcius</option>
+            <option value="K_ke_F">Kelvin Ke Fahrenheit</option>
+            <option value="K_ke_R">Kelvin Ke Reamor</option>
+            <option value="F_ke_K">Fahrenheit Ke Kelvin</option>
+            <option value="F_ke_C">Fahrenheit Ke Celcius</option>
+            <option value="F_ke_R">Fahrenheit Ke Reamor</option>
+            <option value="R_ke_K">Reamor Ke Kelvin</option>
+            <option value="R_ke_C">Reamor Ke Celcius</option>
+            <option value="R_ke_F">Reamor Ke Fahrenheit</option>
+          </select>
+          <br />
+          <button onclick="convert()">Convert</button>
+          <p style="font-size: 20px">
+            Hasil Convert Adalah :
+            <span id="Hasil" style="color: aliceblue; font-size: 20px"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      alert('Sebelum menggunakan program login terlebih dahulu!')
+      var user = 'iamiam'
+      var pwd = '12345'
+      var login = false;
+
+      while (!login){
+        var user_input = prompt('Masukan username : ');
+        var pwd_input = prompt('Masukan Password : ')
+        if(user_input == user && pwd_input == pwd){
+          alert('login berhasil')
+          login = true;
+          break;
+        }else{
+          alert('login gagal coba lagi!!')
+        }
+      }
+
+      function convert(){
+        var inputSuhu = parseFloat(document.querySelector('input[type="text"]').value);
+
+        var selectUnit = document.getElementById("suhu").value;
+        var hasilKonversi;
+        var ketsuhu;
+
+        switch (selectUnit){
+          case "C_ke_K":
+            hasilKonversi = inputSuhu + 273;
+            ketsuhu = "Derajat Kelvin"
+            break;
+          case "C_ke_F":
+            hasilKonversi = (inputSuhu * 9) / 5 + 32;
+            ketsuhu = "Derajat Fahrenheit"
+            break;
+          case "C_ke_R":
+            hasilKonversi = inputSuhu * 0.8;
+            ketsuhu = "Derajat Reamor"
+            break;
+          case "K_ke_C":
+            hasilKonversi = inputSuhu - 273;
+            ketsuhu = "Derajat Celcius"
+            break;
+          case "K_ke_F":
+            hasilKonversi = 9/5*(inputSuhu-273)+32;
+            ketsuhu = "Derajat Fahrenheit"
+            break;
+          case "K_ke_R":
+            hasilKonversi = 4/5*(inputSuhu-273);
+            ketsuhu = "Derajat Reamor"
+            break;
+          case "F_ke_K":
+            hasilKonversi = 5/9*(inputSuhu-32)+273;
+            ketsuhu = "Derajat Kelvin"
+            break;
+          case "F_ke_C":
+            hasilKonversi = 5/9*(inputSuhu-32);
+            ketsuhu = "Derajat Celcius"
+            break;
+          case "F_ke_R":
+            hasilKonversi = 4/9*(inputSuhu-32);
+            ketsuhu = "Derajat Reamor"
+            break;
+          case "R_ke_K":
+            hasilKonversi = (5/4)*inputSuhu+273;
+            ketsuhu = "Derajat Kelvin"
+            break;
+          case "R_ke_C":
+            hasilKonversi = (5/4)*inputSuhu;
+            ketsuhu = "Derajat Celcius"
+            break;
+          case "R_ke_F":
+            hasilKonversi = (9/4)*inputSuhu+32;
+            ketsuhu = "Derajat Fahrenheit"
+            break;
+        }
+
+        document.getElementById("Hasil").textContent = hasilKonversi.toFixed(2) + " " +ketsuhu;
+      }
+
+    </script>
+  </body>
+</html>
